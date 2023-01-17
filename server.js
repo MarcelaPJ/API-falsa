@@ -29,7 +29,7 @@ const Empresa = () => {
     }
 }
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, () => console.log(`Este servidor está corriendo en el puerto ${port}`));
 
 app.get('/api/users/new', (req, res) => {
     const users = Usuario();
