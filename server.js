@@ -3,7 +3,7 @@ const app = express();
 const port = 8080;
 const { faker } = require ('@faker-js/faker');
 
-const Usuario = () => {
+const usuario = () => {
     return {
         id: faker.datatype.number(100),
         firstName: faker.name.firstName(),
@@ -14,7 +14,7 @@ const Usuario = () => {
     }
 }
 
-const Empresa = () => {
+const empresa = () => {
     return {
         id: faker.datatype.uuid(),
         name: faker.company.name(),
@@ -29,8 +29,6 @@ const Empresa = () => {
     }
 }
 
-app.listen(port, () => console.log(`Este servidor está corriendo en el puerto ${port}`));
-
 app.get('/api/users/new', (req, res) => {
     const users = Usuario();
     res.json({Usuario: users})
@@ -41,9 +39,11 @@ app.get('/api/companies/new', (req, res) => {
     res.json({Empresa: company})
 })
 
-app.get('/api/user/company/new', (req, res) => {
+app.get('/api/user/company', (req, res) => {
     const user = Usuario();
     const company = Empresa();
     res.json({Usuario: user, Empresa: company})
 })
+
+app.listen(port, () => console.log(`Este servidor está corriendo en el puerto ${port}`));
 
